@@ -1,9 +1,7 @@
 # EduTrack - Assignment Management System
 ## Internship Project Submission
 
-**Project Name:** EduTrack - Assignment Management System  
-**Submitted By:** [Your Name]  
-**Date:** July 23, 2025  
+**Project Name:** EduTrack - Assignment Management System    
 **Technology Stack:** FastAPI, SQLite, HTML/CSS, JavaScript  
 
 ---
