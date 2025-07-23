@@ -470,16 +470,9 @@ This internship project demonstrates proficiency in:
 
 ---
 
-## 📞 Contact Information
-
-**Developer:** [Your Name]  
-**Email:** [your.email@example.com]  
-**LinkedIn:** [your-linkedin-profile]  
-**GitHub:** [your-github-profile]  
 
 ---
 
-*This README.md serves as a comprehensive documentation for the EduTrack Assignment Management System developed as part of an internship project. The system demonstrates practical application of modern web development technologies and best practices in software engineering.*
 
 ### 👨‍🏫 Teacher Portal
 - **Assignment Management**: Create, view, and delete assignments
