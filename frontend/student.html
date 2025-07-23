@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - EduTrack</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+                <h1>EduTrack - Student Portal</h1>
+            </div>
+            <div class="nav-items">
+                <span id="studentName">Welcome, Student</span>
+                <button onclick="logout()" class="btn-logout" title="Logout (Ctrl+L)">
+                    🚪 Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Quick Access</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="#available-assignments" onclick="scrollToSection('available-assignments')"
+                            class="sidebar-link active">
+                            <span class="sidebar-icon">📚</span>
+                            <span class="sidebar-text">Available Assignments</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#my-submissions" onclick="scrollToSection('my-submissions')" class="sidebar-link">
+                            <span class="sidebar-icon">📤</span>
+                            <span class="sidebar-text">My Submissions</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#student-profile" onclick="scrollToSection('student-profile')" class="sidebar-link">
+                            <span class="sidebar-icon">👤</span>
+                            <span class="sidebar-text">My Profile</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" onclick="refreshData()" class="sidebar-link">
+                            <span class="sidebar-icon">🔄</span>
+                            <span class="sidebar-text">Refresh Data</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Quick Stats -->
+            <div class="sidebar-stats">
+                <h4>Quick Stats</h4>
+                <div class="stat-item">
+                    <span class="stat-label">Available:</span>
+                    <span id="availableAssignmentsStat" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Completed:</span>
+                    <span id="completedAssignmentsStat" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Pending:</span>
+                    <span id="pendingAssignmentsStat" class="stat-value">0</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Current Section Indicator -->
+            <div class="section-indicator">
+                <span id="currentSectionTitle">Available Assignments</span>
+            </div>
+
+            <div class="dashboard">
+                <!-- Available Assignments Section -->
+                <div class="section" id="available-assignments">
+                    <h2>Available Assignments</h2>
+                    <div id="availableAssignments" class="assignments-list">
+                        <!-- Available assignments will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Submission Form Section -->
+                <div class="section" id="submission-form">
+                    <h2>Submit Assignment</h2>
+                    <form id="submissionForm" class="submission-form">
+                        <input type="hidden" id="assignmentId" name="assignment_id">
+                        <div class="form-group">
+                            <label for="submissionFile">Upload Your Work:</label>
+                            <input type="file" id="submissionFile" name="file" required
+                                accept=".pdf,.doc,.docx,.txt,.zip,.png,.jpg,.jpeg">
+                        </div>
+                        <div class="form-group">
+                            <label for="submissionNotes">Additional Notes (Optional):</label>
+                            <textarea id="submissionNotes" name="notes" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Submit Assignment</button>
+                        <button type="button" onclick="cancelSubmission()" class="btn-secondary">Cancel</button>
+                    </form>
+                </div>
+
+                <!-- My Submissions Section -->
+                <div class="section" id="my-submissions">
+                    <h2>My Submissions</h2>
+                    <div id="mySubmissions" class="submissions-list">
+                        <!-- Student's submissions will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Student Profile Section -->
+                <div class="section" id="student-profile">
+                    <h2>My Profile</h2>
+                    <div id="studentProfile" class="profile-section">
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Total Assignments:</span>
+                                <span id="totalAssignments" class="stat-value">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Completed:</span>
+                                <span id="completedAssignments" class="stat-value">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Pending:</span>
+                                <span id="pendingAssignments" class="stat-value">0</span>
+                            </div>
+                        </div>
+                        <div id="teachersList" class="teachers-list">
+                            <h3>Work from Different Teachers:</h3>
+                            <!-- Teachers and their assignments will be listed here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../static/student.js"></script>
+</body>
+
+</html>

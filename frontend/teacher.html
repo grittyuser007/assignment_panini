@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Portal - EduTrack</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+                <h1>EduTrack - Teacher Portal</h1>
+            </div>
+            <div class="nav-items">
+                <span id="teacherName">Welcome, Teacher</span>
+                <button onclick="logout()" class="btn-logout" title="Logout (Ctrl+L)">
+                    🚪 Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Quick Access</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="#create-assignment" onclick="scrollToSection('create-assignment')"
+                            class="sidebar-link active">
+                            <span class="sidebar-icon">➕</span>
+                            <span class="sidebar-text">New Assignment</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#assignments-list" onclick="scrollToSection('assignments-list')" class="sidebar-link">
+                            <span class="sidebar-icon">📚</span>
+                            <span class="sidebar-text">My Assignments</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#submissions-list" onclick="scrollToSection('submissions-list')" class="sidebar-link">
+                            <span class="sidebar-icon">📥</span>
+                            <span class="sidebar-text">Submissions</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" onclick="refreshData()" class="sidebar-link">
+                            <span class="sidebar-icon">🔄</span>
+                            <span class="sidebar-text">Refresh Data</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Quick Stats -->
+            <div class="sidebar-stats">
+                <h4>Quick Stats</h4>
+                <div class="stat-item">
+                    <span class="stat-label">Total Assignments:</span>
+                    <span id="totalAssignmentsStat" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Total Submissions:</span>
+                    <span id="totalSubmissionsStat" class="stat-value">0</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Current Section Indicator -->
+            <div class="section-indicator">
+                <span id="currentSectionTitle">Create New Assignment</span>
+            </div>
+
+            <div class="dashboard">
+                <!-- Assignment Creation Section -->
+                <div class="section" id="create-assignment">
+                    <h2>Create New Assignment</h2>
+                    <form id="assignmentForm" class="assignment-form">
+                        <div class="form-group">
+                            <label for="assignmentTitle">Assignment Title:</label>
+                            <input type="text" id="assignmentTitle" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="assignmentDescription">Description:</label>
+                            <textarea id="assignmentDescription" name="description" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="assignmentDueDate">Due Date:</label>
+                            <input type="datetime-local" id="assignmentDueDate" name="due_date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="assignmentFile">Assignment File (Optional):</label>
+                            <input type="file" id="assignmentFile" name="file" accept=".pdf,.doc,.docx,.txt">
+                        </div>
+                        <button type="submit" class="btn-primary">Create Assignment</button>
+                    </form>
+                </div>
+
+                <!-- Assignments List Section -->
+                <div class="section" id="assignments-list">
+                    <h2>Your Assignments</h2>
+                    <div id="assignmentsList" class="assignments-list">
+                        <!-- Assignments will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Submissions View Section -->
+                <div class="section" id="submissions-list">
+                    <h2>Student Submissions</h2>
+                    <div id="submissionsList" class="submissions-list">
+                        <!-- Submissions will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../static/teacher.js"></script>
+</body>
+
+</html>
